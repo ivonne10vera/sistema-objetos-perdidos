@@ -1,0 +1,9 @@
+# Explicación de la Base de Datos (`objetos_perdidos_db`)
+
+La base de datos relacional está diseñada con 4 tablas (`usuarios`, `categorias`, `objetos` y `solicitudes_reclamo`) conectadas mediante llaves primarias y foráneas para resolver los cinco problemas principales del sistema:
+
+1. **Pérdida de información y registro desordenado:** La tabla `objetos` centraliza cada reporte con título, descripción, tipo de reporte (`extraviado` o `encontrado`), fecha, lugar y su relación directa con `categorias` (`id_categoria`) y `usuarios` (`id_usuario`), evitando registros dispersos o incompletos.
+2. **Falta de seguimiento del estado del objeto:** El campo `estado` en la tabla `objetos` (`reportado`, `encontrado`, `reclamado`, `entregado`) permite actualizar y rastrear en tiempo real en qué etapa se encuentra cada pertenencia.
+3. **Dificultad para filtrar y buscar pertenencias:** Las llaves foráneas (`id_categoria`) junto con los campos indexables `fecha` y `lugar` permiten realizar consultas SQL rápidas con filtros combinados (`WHERE` y `JOIN`) para localizar artículos específicos.
+4. **Entregas sin validación ni respaldo de propiedad:** La tabla `solicitudes_reclamo` vincula al usuario solicitante (`id_usuario_reclamante`) con el objeto reclamado (`id_objeto`), almacenando una justificación o prueba de pertenencia y el estado de aprobación (`pendiente`, `aprobada`, `rechazada`) antes de marcar el artículo como `entregado`.
+5. **Ausencia de métricas e historial administrativo:** Al almacenar fechas, ubicaciones, categorías y estados de cada reporte, las consultas SQL de agregación (`COUNT`, `GROUP BY`) permiten generar estadísticas reales sobre objetos recuperados frente a pendientes y las zonas con mayor incidencia de extravíos.
