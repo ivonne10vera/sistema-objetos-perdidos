@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from db import get_db_connection
 from routes.auth_routes import auth_bp
+from routes.reportes_routes import reportes_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -10,6 +11,7 @@ app.config['JWT_SECRET_KEY'] = 'clave-secreta-universidad-2026'
 jwt = JWTManager(app)
 
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
+app.register_blueprint(reportes_bp, url_prefix='/api/reportes')
 
 @app.route('/api/test-db', methods=['GET'])
 def test_db():
