@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo - Objetos Perdidos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand">Objetos Perdidos</span>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Barra de filtros -->
+    <form id="form-filtros" class="card card-body shadow-sm mb-4">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label class="form-label" for="f-q">Buscar</label>
+          <input type="text" id="f-q" class="form-control" placeholder="Ej: mochila, llaves...">
+        </div>
+        <div class="col-md-2">
+          <label class="form-label" for="f-tipo">Tipo</label>
+          <select id="f-tipo" class="form-select">
+            <option value="">Todos</option>
+            <option value="extraviado">Extraviado</option>
+            <option value="encontrado">Encontrado</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label" for="f-categoria">Categoría</label>
+          <select id="f-categoria" class="form-select"><option value="">Todas</option></select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label" for="f-lugar">Lugar</label>
+          <select id="f-lugar" class="form-select"><option value="">Todos</option></select>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label" for="f-estado">Estado</label>
+          <select id="f-estado" class="form-select">
+            <option value="">Todos</option>
+            <option value="reportado">Reportado</option>
+            <option value="encontrado">Encontrado</option>
+            <option value="reclamado">Reclamado</option>
+            <option value="entregado">Entregado</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label" for="f-desde">Desde</label>
+          <input type="date" id="f-desde" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label" for="f-hasta">Hasta</label>
+          <input type="date" id="f-hasta" class="form-control">
+        </div>
+        <div class="col-md-2 d-grid">
+          <button type="button" id="btn-limpiar" class="btn btn-outline-secondary">Limpiar</button>
+        </div>
+      </div>
+    </form>
+
+    <p id="contador" class="text-muted"></p>
+
+    <!-- Tarjetas -->   
+    <div id="lista-objetos" class="row g-4"></div>
+  </div>
+
+<script src="js/catalogo.js"></script></html>
