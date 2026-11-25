@@ -1,20 +1,4 @@
-"""
-Integrante 3 - Consultas y Filtros (Catálogo)
-Ubicación: backend/routes/catalogo_routes.py
 
-Endpoints (con url_prefix='/api/objetos'):
-  GET /api/objetos            -> lista con filtros opcionales
-  GET /api/objetos/filtros    -> categorías y lugares para llenar los <select>
-
-Filtros por query string:
-  ?categoria=2            (id de la categoría)
-  &lugar=biblioteca       (búsqueda parcial)
-  &fecha_desde=2026-11-01
-  &fecha_hasta=2026-11-30
-  &tipo=extraviado        (extraviado | encontrado)
-  &estado=reportado       (reportado | encontrado | reclamado | entregado)
-  &q=mochila              (título o descripción)
-"""
 from flask import Blueprint, request, jsonify
 from db import get_db_connection
 
@@ -35,8 +19,7 @@ def listar_objetos():
     estado = request.args.get("estado")
     q = request.args.get("q")
 
-    # WHERE dinámico: solo se agrega la condición si el filtro viene en la URL.
-    # Siempre con %s (parámetros) para evitar SQL Injection.
+    
     if categoria:
         condiciones.append("o.id_categoria = %s")
         params.append(categoria)
