@@ -1,3 +1,4 @@
+from routes.catalogo_routes import catalogo_bp
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -12,6 +13,7 @@ jwt = JWTManager(app)
 
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 app.register_blueprint(reportes_bp, url_prefix='/api/reportes')
+app.register_blueprint(catalogo_bp, url_prefix='/api/objetos')
 
 @app.route('/api/test-db', methods=['GET'])
 def test_db():
